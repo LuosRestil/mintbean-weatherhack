@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mintbean WeatherHack</title>
+
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+
+    <script src="/script.js" defer></script>
+  </head>
+  <body class="text-white">
+    <header class="w-full">
+      <nav
+        class="flex flex-col items-center p-2 w-full md:p-3 md:flex-row justify-between"
+      >
+        <div class="text-white text-2xl">
+          WeatherHack
+        </div>
+        <div class="form-wrapper-main m-2 md:m-0">
+          <form
+            id="city-selector"
+            class="text-md flex items-center justify-center md:text-lg"
+          >
+            <input
+              id="city-input"
+              type="text"
+              class="p-1 rounded border w-2/3 text-black"
+            />
+            <button
+              type="submit"
+              class="button bg-blue-700 text-white rounded px-2 pb-2 pt-1 ml-1 hover:bg-blue-900"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+        <div class="unitSelector pt-1 md:pt-0">
+          <button
+            onclick="fahrenheit()"
+            class="units-button selected bg-blue-700 text-white rounded p-2"
+            id="fahrenheit"
+          >
+            F°
+          </button>
+          <button
+            onclick="celsius()"
+            class="units-button bg-blue-700 text-white rounded p-2"
+            id="celsius"
+          >
+            C°
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="main-wrapper text-center">
+        <div
+          class="current-weather-wrapper flex flex-col items-center"
+          id="current-weather-wrapper"
+        ></div>
+        <div class="flex justify-center">
+          <div class="forecast-wrapper" id="forecast-wrapper"></div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function activatePlacesSearch() {
+        let input = document.getElementById("city-input");
+        let autocomplete = new google.maps.places.Autocomplete(input);
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjG05R4az7wH8l1Lez3fn_trpdla8Ig0s&libraries=places&callback=activatePlacesSearch"
+    ></script>
+  </body>
+</html>
